@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores de Fundo e Superfície */
+  --bg-color: #0b0914;      /* Roxo quase preto, muito profundo */
+  --bg-card: #1c192b;       /* Roxo escuro para cards, com leve elevação visual */
+  
+  /* Cores Primárias (Roxo) */
+  --primary: #8b5cf6;       /* Roxo vibrante (estilo Violet-500) */
+  --primary-low: #4c1d95;   /* Roxo escuro para estados de hover ou bordas */
+  
+  /* Cores de Texto */
+  --text-main: #f8fafc;     /* Branco levemente azulado para não agredir os olhos */
+  --text-muted: #94a3b8;    /* Cinza azulado para textos secundários */
+  --text-accent: #d8b4fe;   /* Roxo claro para destaques em texto */
+
+  /* Tipografia */
+  --font-default: -apple-system, BlinkMacSystemFont, "Inter", "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-default);
+  -webkit-font-smoothing: antialiased;
+}
+
