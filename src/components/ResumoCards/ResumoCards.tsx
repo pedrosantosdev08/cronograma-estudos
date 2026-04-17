@@ -24,38 +24,38 @@ export const ResumoCards = ({ stats }: StatsProps) => {
       valor: stats.materiasUnicas, 
       icon: faBookBookmark, 
       color: "text-blue-600", 
-      bg: "bg-blue-50" 
+      bg: "bg-cyan-200" 
     },
     { 
       label: "Sessões", 
       valor: stats.totalSessoes, 
       icon: faLayerGroup, 
       color: "text-purple-600", 
-      bg: "bg-purple-50" 
+      bg: "bg-purple-200" 
     },
     { 
       label: "Dias Ativos", 
       valor: stats.diasAtivos, 
       icon: faCalendarCheck, 
       color: "text-emerald-600", 
-      bg: "bg-emerald-50" 
+      bg: "bg-emerald-200" 
     },
     { 
       label: "Horas Totais", 
       valor: `${stats.horasTotais}h`, 
       icon: faClock, 
       color: "text-amber-600", 
-      bg: "bg-amber-50" 
+      bg: "bg-amber-200" 
     },
   ];
 
   return (
-    // 3. Grid responsivo: 2 colunas no mobile, 4 no desktop
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+    
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ">
       {itens.map((item) => (
         <div 
           key={item.label} 
-          className="relative overflow-hidden bg-white p-5 md:p-6 rounded-3xl shadow-sm border border-gray-100 transition-all hover:shadow-md group"
+          className="relative overflow-hidden bg-(--bg-card) p-5 md:p-6 rounded-3xl  transition-all hover:shadow-md group"
         >
           {/* Decoração sutil de fundo */}
           <div className={`absolute -right-2 -top-2 w-12 h-12 rounded-full opacity-10 transition-transform group-hover:scale-150 ${item.bg}`} />

@@ -8,6 +8,7 @@
   /* Cores Primárias (Roxo) */
   --primary: #8b5cf6;       /* Roxo vibrante (estilo Violet-500) */
   --primary-low: #4c1d95;   /* Roxo escuro para estados de hover ou bordas */
+  --primary-high: ;  /* Roxo claro para destaques ou fundos de elementos primários */
   
   /* Cores de Texto */
   --text-main: #f8fafc;     /* Branco levemente azulado para não agredir os olhos */

@@ -37,7 +37,7 @@ export const FormularioAtividade = ({ onSave, onCancel }: FormularioProps) => {
       ref={formRef}
       onClick={(e) => e.stopPropagation()}
       className="
-        p-4 bg-white shadow-2xl rounded-2xl border-2 border-blue-500/20 
+        p-4 bg-(--bg-card) shadow-2xl rounded-2xl border-2 border-(--primary) 
         flex flex-col gap-3 z-50 relative 
         w-full max-w-full box-border
         animate-in fade-in zoom-in slide-in-from-top-2 duration-300
@@ -46,12 +46,12 @@ export const FormularioAtividade = ({ onSave, onCancel }: FormularioProps) => {
     >
       {/* Campo Matéria */}
       <div className="flex flex-col gap-1 w-full ">
-        <label className="text-[9px] font-black text-(--text-accent) uppercase tracking-widest ml-1">
+        <label className="text-[9px]  text-(--primary) uppercase tracking-widest ml-1">
           Matéria
         </label>
         <select
           autoFocus
-          className="w-full text-sm font-bold outline-none bg-gray-50 text-black rounded-lg p-2.5 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all border border-transparent focus:border-(--primary)"
+          className="w-full  text-xs outline-none bg-gray-50 text-black rounded-lg p-2.5 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all border border-transparent focus:border-(--primary)"
           value={materia}
           onChange={(e) => setMateria(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
@@ -71,11 +71,11 @@ export const FormularioAtividade = ({ onSave, onCancel }: FormularioProps) => {
 
       {/* Campo Conteúdo */}
       <div className="flex flex-col gap-1 w-full text-(--primary)">
-        <label className="text-[9px] font-black text-gray-400 uppercase tracking-widest ml-1">
+        <label className="text-[9px] font-black text-(--primary) uppercase tracking-widest ml-1">
           Assunto
         </label>
         <input
-          className="w-full text-xs outline-none bg-gray-50 rounded-lg p-2.5 focus:bg-white border border-transparent focus:border-(--primary) transition-all"
+          className="w-full text-xs text-(--primary) outline-none bg-gray-50 rounded-lg p-2.5 focus:bg-white border border-transparent focus:border-(--primary) transition-all"
           placeholder="O que vai estudar?"
           value={conteudo}
           onChange={(e) => setConteudo(e.target.value)}

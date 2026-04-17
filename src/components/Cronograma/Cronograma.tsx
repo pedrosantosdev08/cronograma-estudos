@@ -2,27 +2,13 @@ import React, { useState } from "react";
 import { FormularioAtividade } from "../FormularioAtividade/FormularioAtividade";
 import { SlotVazio } from "../ui/SlotVazio/SlotVazio";
 import { CardAtividade } from "../CardAtividade/CardAtividade";
-
 import type { DiaSemana } from "../../utils/dateUtils";
 
 export interface Atividade {
   materia: string;
-
   conteudo: string;
-
   duracao: string;
-
   cor: string;
-}
-
-interface CronogramaProps {
-  semana: DiaSemana[];
-
-  atividades: Record<string, Atividade[]>;
-
-  setAtividades: React.Dispatch<
-    React.SetStateAction<Record<string, Atividade[]>>
-  >;
 }
 
 interface CronogramaProps {
@@ -70,12 +56,14 @@ export const Cronograma = ({
   return (
     <main
       className="
-        flex flex-col gap-10        
-        md:grid md:grid-cols-7 md:gap-6 
-      bg-white p-4 md:p-10 
-        rounded-3xl md:rounded-[3rem] 
-        shadow-[0_0_10px_rgba(59,130,246,0.3)] shadow-blue-400
-       mt-8
+        /* Estrutura Base: Mobile primeiro */
+         flex flex-col gap-10 mt-2 p-4 rounded-3xl  bg-(--bg-card) 
+        
+        /* Tablet: Começa a transição para grid mas com scroll se necessário */
+        sm:p-6 
+        
+        /* Desktop: Layout de 7 colunas fixas */
+        lg:grid lg:grid-cols-7 lg:gap-4 lg:p-8 lg:rounded-2xl 
       "
     >
       {semana.map((dia) => {
@@ -84,31 +72,30 @@ export const Cronograma = ({
         const estaEditando = slotAtivo === idDoSlot;
 
         return (
-          /* Este container agora é a "coluna" do dia no Desktop e o "bloco" no Mobile */
-          <div key={idDoSlot} className="flex flex-col gap-4">
-            {/* CABEÇALHO DO DIA */}
-            <div className="flex flex-col items-start md:items-center min-w-0">
-              <span className="text-[10px] uppercase font-black text-(--text-accent) tracking-[0.2em] mb-1">
+          <div key={idDoSlot} className="flex flex-col gap-4 min-w-0">
+            {/* CABEÇALHO DO DIA - Centralizado no desktop, alinhado à esquerda no mobile */}
+            <div className="flex flex-col items-start lg:items-center min-w-0">
+              <span className="text-2xl capitalize font-black text-(--text-accent) mb-1">
                 {dia.nome.slice(0, 3)}
               </span>
-              <span className="text-2xl md:text-3xl font-black text-gray-700">
+              <span className="text-2xl md:text-2xl text-white">
                 {dia.data}
               </span>
               <div className="w-8 h-1 bg-(--primary) rounded-full mt-2" />
             </div>
 
-            {/* CONTAINER DE CARDS */}
+            {/* CONTAINER DE CARDS - Horizontal no mobile/tablet, Vertical no Desktop */}
             <div
-              className="               
+              className="               
                 flex flex-row gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x
-                md:flex-col md:overflow-visible md:pb-0 md:min-h-100
+                lg:flex-col lg:overflow-visible lg:pb-0 lg:min-h-[400px]
               "
             >
               {listaDeAtividades.map((atv, index) => (
                 <div
                   key={`${idDoSlot}-${index}`}
-                  /* min-w-70 ou similar para o card não encolher no mobile */
-                  className="min-w-70 md:min-w-0 snap-center"
+                  /* min-w-[280px] garante que o card seja legível no scroll horizontal */
+                  className="min-w-[280px] lg:min-w-0 snap-center"
                 >
                   <CardAtividade
                     atividade={atv}
@@ -118,21 +105,21 @@ export const Cronograma = ({
               ))}
 
               {estaEditando ? (
-                <div className="min-w-70 md:min-w-0 animate-in fade-in slide-in-from-top-4 duration-300">
+                <div className="min-w-[280px] lg:min-w-0 animate-in fade-in slide-in-from-top-4 duration-300">
                   <FormularioAtividade
                     onSave={(dados) => handleAddAtividade(idDoSlot, dados)}
                     onCancel={() => setSlotAtivo(null)}
                   />
                 </div>
               ) : (
-                <div className="min-w-70 md:min-w-0">
+                <div className="min-w-[280px] lg:min-w-0">
                   <SlotVazio onClick={() => setSlotAtivo(idDoSlot)} />
                 </div>
               )}
             </div>
 
-            {/* Divisor visual apenas no mobile */}
-            <hr className="md:hidden border-gray-100 mt-2" />
+            {/* Divisor visual apenas abaixo do Desktop */}
+            <hr className="lg:hidden border-gray-100 mt-2" />
           </div>
         );
       })}

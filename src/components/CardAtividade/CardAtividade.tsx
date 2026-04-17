@@ -1,4 +1,4 @@
-import { faClock, faTrash, faBookOpen } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { Atividade } from "../Cronograma/Cronograma";
 
@@ -47,10 +47,10 @@ export const CardAtividade = ({ atividade, onDelete }: CardAtividadeProps) => {
 
       {/* Cabeçalho do Card: Matéria */}
       <div className="flex items-start justify-between gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {/* Ícone discreto para reforçar o contexto de estudo */}
-          <FontAwesomeIcon icon={faBookOpen} className="text-[10px] opacity-40" />
-          <h4 className="font-black text-[14px] leading-tight tracking-tight uppercase">
+          <span>&#x2022;</span>
+          <h4 className="text-[15px] leading-tight tracking-tight uppercase lg:text-[11px]">
             {atividade.materia}
           </h4>
         </div>
